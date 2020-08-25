@@ -48,26 +48,24 @@ while x < 2
     if num_active_keys > 0                                               
     {
         old_keys = (prev_round_dict.keys()).diff(active_keys)
-        type_old_keys = type(old_keys)
         echo("Old Keys: $old_keys") 
-        echo('Type of old_keys: $type_old_keys') 
         num_old_keys = old_keys.len()
         echo("Old Keys First Count: $num_old_keys")
         if (num_old_keys > 0)                                            
         {
-            echo("I am inside the if old keys loop")
             echo(old_keys)
-            for x in old_keys                                     
+            for old_key in old_keys                                     
             {
-                echo("miracles happen: $x")  
+                echo("miracles happen: $old_key")  
                 active_session_dict.pop(old_key)
             }
         }
         else
         {
             echo("I am inside the else not old keys loop")
-            # remaining_keys = active_session_dict.keys()                              
-        
+            remaining_keys = active_session_dict.keys()
+            echo("Printing Remaining Keys...")
+            echo(remaining_keys)                              
             # for key in remaining_keys                                               
             # {
             #     start_usr_dict = prev_round_dict[key]
