@@ -37,7 +37,7 @@ current_round_dict = {}
 x = 0
 echo("x = $x")
 
-while x < 3 
+while x < 2 
 {
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()
@@ -59,11 +59,11 @@ while x < 3
         if (new_num_old_keys > 0)                                            
         {
             echo("I am inside the if old keys loop")
-            # for old_key in old_keys:                                     
-            # {
-            #     echo("Current Old Key: $old_key")  
-            #     active_session_dict.pop(old_key)
-            # }
+            for x in old_keys:                                     
+            {
+                echo("Current Old Key: $old_key")  
+                #active_session_dict.pop(old_key)
+            }
         }
         else
         {
