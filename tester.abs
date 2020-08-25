@@ -37,7 +37,7 @@ current_round_dict = {}
 x = 0
 echo("x = $x")
 
-while x < 10 
+while x < 3
 {
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()
@@ -78,6 +78,7 @@ while x < 10
                     begin_wall_clock = 0
                     begin_cpu_clock = 0
                     consecutive_overusage = 0
+                    cpu_usage_pct = 0
                 }
                 else
                 {
@@ -87,7 +88,8 @@ while x < 10
                     consecutive_overusage = start_usr_dict['consecutive_overusage']
                 }
 
-                finish_usr_dict = active_session_dict[key]                          
+                #finish_usr_dict = active_session_dict[key]  
+                finish_usr_dict = prev_round_dict[key]                          
                 
                 stop_wall_clock = finish_usr_dict['wall_clock']
                 #echo("Stop Wall Clock: $stop_wall_clock")
