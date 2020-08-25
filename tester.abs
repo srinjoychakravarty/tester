@@ -63,7 +63,7 @@ while x < 2
             echo(old_keys)
             for x in old_keys                                     
             {
-                echo("miracles happen")  
+                echo("miracles happen: $x")  
                 #active_session_dict.pop(old_key)
             }
         }
