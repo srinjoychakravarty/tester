@@ -41,8 +41,8 @@ while x < 4
 {
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()
-    echo("Printing Active Session Dictionary...\n") 
-    echo("$active_session_dict")                             
+    # echo("Printing Active Session Dictionary...\n") 
+    # echo("$active_session_dict")                             
     num_active_keys = active_keys.len()
     echo("Number of Active Keys: $num_active_keys")
     if num_active_keys > 0                                               
