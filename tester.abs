@@ -45,53 +45,54 @@ while x < 4
     echo("$active_session_dict")                             
     num_active_keys = active_keys.len()
     echo("Number of Active Keys: $num_active_keys")
-    # if num_active_keys > 0                                               
-    # {
-    #     old_keys = (prev_round_dict.keys()).diff(active_keys)            
-    #     if old_keys.len() > 0                                            
-    #     {
-    #         for old_key in old_keys:                                     
-    #         {
-    #             active_session_dict.pop(old_key)
-    #         }
-    #     }
+    if num_active_keys > 0                                               
+    {
+        old_keys = (prev_round_dict.keys()).diff(active_keys)
+        echo("Old Keys: $old_keys")            
+        # if old_keys.len() > 0                                            
+        # {
+        #     for old_key in old_keys:                                     
+        #     {
+        #         active_session_dict.pop(old_key)
+        #     }
+        # }
     
-    #     remaining_keys = active_session_dict.keys()                              
+        # remaining_keys = active_session_dict.keys()                              
         
-    #     for key in remaining_keys                                               
-    #     {
-    #         start_usr_dict = prev_round_dict[key]
-    #         begin_wall_clock = start_usr_dict['wall_clock']
-	#         begin_cpu_clock = start_usr_dict['cpu_clock']
+        # for key in remaining_keys                                               
+        # {
+        #     start_usr_dict = prev_round_dict[key]
+        #     begin_wall_clock = start_usr_dict['wall_clock']
+	    #     begin_cpu_clock = start_usr_dict['cpu_clock']
  
-    #         finish_usr_dict = active_session_dict[key]                          
-	#         stop_wall_clock = finish_usr_dict['wall_clock']
-	#         stop_cpu_clock = finish_usr_dict['cpu_clock']
+        #     finish_usr_dict = active_session_dict[key]                          
+	    #     stop_wall_clock = finish_usr_dict['wall_clock']
+	    #     stop_cpu_clock = finish_usr_dict['cpu_clock']
 
-    #         cpu_duration = stop_cpu_clock - begin_cpu_clock 
-	#         wall_clock_duration = stop_wall_clock - begin_wall_clock
-	#         cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3) 
+        #     cpu_duration = stop_cpu_clock - begin_cpu_clock 
+	    #     wall_clock_duration = stop_wall_clock - begin_wall_clock
+	    #     cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3) 
 
-    #         tmp_usr_dict = {}
-    #         tmp_usr_dict['wall_clock'] = stop_wall_clock
-    #         tmp_usr_dict['cpu_clock'] = stop_cpu_clock
+        #     tmp_usr_dict = {}
+        #     tmp_usr_dict['wall_clock'] = stop_wall_clock
+        #     tmp_usr_dict['cpu_clock'] = stop_cpu_clock
 
-    #         if (cpu_usage_pct > overusage_parameter)
-	#         {
-    #             tmp_usr_dict['cpu_usage'] = cpu_usage_pct
-	# 	        tmp_usr_dict['consecutive_overusage'] += 1
-	#         }
+        #     if (cpu_usage_pct > overusage_parameter)
+	    #     {
+        #         tmp_usr_dict['cpu_usage'] = cpu_usage_pct
+		#         tmp_usr_dict['consecutive_overusage'] += 1
+	    #     }
             
-    #         current_round_dict[key] = tmp_usr_dict
-    #     }
+        #     current_round_dict[key] = tmp_usr_dict
+        # }
 
-    #     echo(current_round_dict)
-    #     prev_round_dict = current_round_dict
-    # }
+        # echo(current_round_dict)
+        # prev_round_dict = current_round_dict
+    }
     
-    # x += 1
-    # echo("Sleeping for $loop_cadence seconds...")
-    # sleep(loop_cadence*1000)
-    # echo("I ❤ Northeastern")
+    x += 1
+    echo("Sleeping for $loop_cadence seconds...")
+    sleep(loop_cadence*1000)
+    echo("I ❤ Northeastern")
 }
 
