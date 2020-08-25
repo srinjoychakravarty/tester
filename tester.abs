@@ -56,7 +56,7 @@ while x < 3
         old_keys[0] = 1 
         new_num_old_keys = old_keys.len()
         echo("Old Keys Second Count: $new_num_old_keys")
-        if (num_old_keys > 0)                                            
+        if (new_num_old_keys > 0)                                            
         {
             echo("I am inside the if old keys loop")
             # for old_key in old_keys:                                     
