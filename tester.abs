@@ -1,0 +1,92 @@
+f get_active_session_dicts()
+{
+    active_session_dict = {}
+	users = []
+	user_slices = `ls /sys/fs/cgroup/cpu/user.slice/` 
+	usr_list = user_slices.lines()
+	num_users = usr_list.len()
+	base_path = "/sys/fs/cgroup/cpu/user.slice/"
+	for i = 0; i < num_users; i = i + 1
+	{
+		usr_str = usr_list[i]
+		if ("user" in usr_str) 
+		{
+			target = base_path+usr_str
+			current_path = cd(target)
+			temp_dict = {}
+			wall_clock = `date +%s%N`
+			temp_dict['wall_clock'] = int(wall_clock)	 
+			cpu_clock_str = `cat $target/cpuacct.usage`
+            temp_dict['cpu_clock'] = int(cpu_clock_str)  
+			active_session_dict[usr_str] = temp_dict   
+		}
+	}
+	return active_session_dict
+}
+
+loop_cadence = int(arg(2))
+email_threshold = int(arg(3))
+overusage_parameter = int(arg(4))
+prev_round_dict = {}
+current_round_dict = {}
+
+x = 0
+
+while x < 10 
+{
+    active_session_dict = get_active_session_dicts()
+    active_keys = active_session_dict.keys()                             # active keys == new keys
+    num_active_keys = active_keys.len()
+    if num_active_keys > 0                                               # only compute if at least 1 active session
+    {
+        # check if any expired keys from active round
+        old_keys = (prev_round_dict.keys()).diff(active_keys)            # identify old keys
+        if old_keys.len() > 0                                            # avoid unneccesary computation
+        {
+            # remove expired keys from active round
+            for old_key in old_keys:                                     # loop to purge old keys out of state dict
+            {
+                active_session_dict.pop(old_key)
+            }
+        }
+        # remaining keys == current round
+        remaining_keys = active_session_dict.keys()                              # all of the remaining keys for this round after subtracting old keys
+        
+        
+        for key in remaining_keys                                               # calculate difference in cpu/wall usage (current_round_dict - prev_round_dict) for remaining keys
+        {
+            start_usr_dict = prev_round_dict[key]
+            begin_wall_clock = start_usr_dict['wall_clock']
+	        begin_cpu_clock = start_usr_dict['cpu_clock']
+ 
+            finish_usr_dict = active_session_dict[key]                          # extract cpu / wall times for current round
+	        stop_wall_clock = finish_usr_dict['wall_clock']
+	        stop_cpu_clock = finish_usr_dict['cpu_clock']
+
+            cpu_duration = stop_cpu_clock - begin_cpu_clock 
+	        wall_clock_duration = stop_wall_clock - begin_wall_clock
+	        cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3) 
+
+            tmp_usr_dict = {}
+            tmp_usr_dict['wall_clock'] = stop_wall_clock
+            tmp_usr_dict['cpu_clock'] = stop_cpu_clock
+
+            if (cpu_usage_pct > overusage_parameter)
+	        {
+                tmp_usr_dict['cpu_usage'] = cpu_usage_pct
+		        tmp_usr_dict['consecutive_overusage'] += 1
+	        }
+            
+            current_round_dict[key] = tmp_usr_dict
+        }
+
+        echo(current_round_dict)
+        prev_round_dict = current_round_dict
+    }
+    
+    x += 1
+    echo("Sleeping for $loop_cadence seconds...")
+    sleep(loop_cadence*1000)
+    echo("I ❤ Northeastern")
+}
+
