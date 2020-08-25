@@ -69,7 +69,7 @@ while x < 2
             for key in remaining_keys                                               
             {
                 start_usr_dict = prev_round_dict[key]
-                if (begin_wall_clock == null)
+                if (start_usr_dict == null)
                 {
                     echo ("can fill in null...")
                     # begin_wall_clock = 0
