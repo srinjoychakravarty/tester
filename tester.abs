@@ -37,7 +37,7 @@ current_round_dict = {}
 x = 0
 echo("x = $x")
 
-while x < 2 
+while x < 1 
 {
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()
