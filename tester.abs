@@ -53,7 +53,8 @@ while x < 2
         echo('Type of old_keys: $type_old_keys') 
         num_old_keys = old_keys.len()
         echo("Old Keys First Count: $num_old_keys")
-        old_keys[0] = 1 
+        old_keys[0] = 1
+        old_keys[1] = 2 
         new_num_old_keys = old_keys.len()
         echo("Old Keys Second Count: $new_num_old_keys")
         if (new_num_old_keys > 0)                                            
