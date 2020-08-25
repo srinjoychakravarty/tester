@@ -66,32 +66,32 @@ while x < 2
             remaining_keys = active_session_dict.keys()
             echo("Printing Remaining Keys...")
             echo(remaining_keys)                              
-            # for key in remaining_keys                                               
-            # {
-            #     start_usr_dict = prev_round_dict[key]
-            #     begin_wall_clock = start_usr_dict['wall_clock']
-            #     begin_cpu_clock = start_usr_dict['cpu_clock']
+            for key in remaining_keys                                               
+            {
+                start_usr_dict = prev_round_dict[key]
+                begin_wall_clock = start_usr_dict['wall_clock']
+                begin_cpu_clock = start_usr_dict['cpu_clock']
     
-            #     finish_usr_dict = active_session_dict[key]                          
-            #     stop_wall_clock = finish_usr_dict['wall_clock']
-            #     stop_cpu_clock = finish_usr_dict['cpu_clock']
+                # finish_usr_dict = active_session_dict[key]                          
+                # stop_wall_clock = finish_usr_dict['wall_clock']
+                # stop_cpu_clock = finish_usr_dict['cpu_clock']
 
-            #     cpu_duration = stop_cpu_clock - begin_cpu_clock 
-            #     wall_clock_duration = stop_wall_clock - begin_wall_clock
-            #     cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3) 
+                # cpu_duration = stop_cpu_clock - begin_cpu_clock 
+                # wall_clock_duration = stop_wall_clock - begin_wall_clock
+                # cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3) 
 
-            #     tmp_usr_dict = {}
-            #     tmp_usr_dict['wall_clock'] = stop_wall_clock
-            #     tmp_usr_dict['cpu_clock'] = stop_cpu_clock
+                # tmp_usr_dict = {}
+                # tmp_usr_dict['wall_clock'] = stop_wall_clock
+                # tmp_usr_dict['cpu_clock'] = stop_cpu_clock
 
-            #     if (cpu_usage_pct > overusage_parameter)
-            #     {
-            #         tmp_usr_dict['cpu_usage'] = cpu_usage_pct
-            #         tmp_usr_dict['consecutive_overusage'] += 1
-            #     }
+                # if (cpu_usage_pct > overusage_parameter)
+                # {
+                #     tmp_usr_dict['cpu_usage'] = cpu_usage_pct
+                #     tmp_usr_dict['consecutive_overusage'] += 1
+                # }
                 
-            #     current_round_dict[key] = tmp_usr_dict
-            # }
+                # current_round_dict[key] = tmp_usr_dict
+            }
 
             # echo(current_round_dict)
             # prev_round_dict = current_round_dict
