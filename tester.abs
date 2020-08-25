@@ -50,8 +50,13 @@ while x < 3
         old_keys = (prev_round_dict.keys()).diff(active_keys)
         type_old_keys = type(old_keys)
         echo("Old Keys: $old_keys") 
-        echo('Type of old_keys: $type_old_keys')           
-        if (old_keys.len() > 0)                                            
+        echo('Type of old_keys: $type_old_keys') 
+        num_old_keys = old_keys.len()
+        echo("Old Keys First Count: $num_old_keys")
+        old_keys[0] = 1 
+        new_num_old_keys = old_keys.len()
+        echo("Old Keys Second Count: $new_num_old_keys")
+        if (num_old_keys > 0)                                            
         {
             echo("I am inside the if old keys loop")
             # for old_key in old_keys:                                     
