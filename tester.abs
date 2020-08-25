@@ -37,7 +37,7 @@ current_round_dict = {}
 x = 0
 echo("x = $x")
 
-while x < 4 
+while x < 3 
 {
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()
@@ -49,13 +49,14 @@ while x < 4
     {
         old_keys = (prev_round_dict.keys()).diff(active_keys)
         echo("Old Keys: $old_keys")            
-        # if old_keys.len() > 0                                            
-        # {
-        #     for old_key in old_keys:                                     
-        #     {
-        #         active_session_dict.pop(old_key)
-        #     }
-        # }
+        if old_keys.len() > 0                                            
+        {
+            for old_key in old_keys:                                     
+            {
+                echo("Current Old Key: $old_key")  
+                active_session_dict.pop(old_key)
+            }
+        }
     
         # remaining_keys = active_session_dict.keys()                              
         
