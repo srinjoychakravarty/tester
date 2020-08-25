@@ -72,13 +72,14 @@ while x < 10
                 start_usr_dict = prev_round_dict[key]
                 if (start_usr_dict == null)
                 {
-                    echo ("can fill in null...")
+                    echo ("entered if to fill in null 0s...")
                     begin_wall_clock = 0
                     begin_cpu_clock = 0
                     consecutive_overusage = 0
                 }
                 else
                 {
+                    echo ("entered else to retrieve in clocks...")
                     begin_wall_clock = start_usr_dict['wall_clock']
                     begin_cpu_clock = start_usr_dict['cpu_clock']
                     consecutive_overusage = start_usr_dict['consecutive_overusage']
@@ -99,7 +100,7 @@ while x < 10
                 #echo("Wall Clock Duration: $wall_clock_duration")
 
                 cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3)
-                #echo("CPU Usage Percent: $cpu_usage_pct") 
+                echo("CPU Usage Percent: $cpu_usage_pct") 
 
                 tmp_usr_dict = {}
                 tmp_usr_dict['wall_clock'] = stop_wall_clock
@@ -110,10 +111,11 @@ while x < 10
 
                 if (cpu_usage_pct > overusage_parameter)
                 {
+                    echo("Entered Overusage Parameter with percent: $cpu_usage_pct")
                     tmp_usr_dict['consecutive_overusage'] = consecutive_overusage + 1
                 }
 
-                #echo("Temp User Dict: $tmp_usr_dict")
+                echo("Temp User Dict: $tmp_usr_dict")
                 
                 current_round_dict[key] = tmp_usr_dict
             }
