@@ -102,13 +102,15 @@ while x < 2
                 tmp_usr_dict['wall_clock'] = stop_wall_clock
                 tmp_usr_dict['cpu_clock'] = stop_cpu_clock
 
-                echo("Temp User Dict: $tmp_usr_dict")
+                #echo("Temp User Dict: $tmp_usr_dict")
 
-                # if (cpu_usage_pct > overusage_parameter)
-                # {
-                #     tmp_usr_dict['cpu_usage'] = cpu_usage_pct
-                #     tmp_usr_dict['consecutive_overusage'] += 1
-                # }
+                if (cpu_usage_pct > overusage_parameter)
+                {
+                    tmp_usr_dict['cpu_usage'] = cpu_usage_pct
+                    tmp_usr_dict['consecutive_overusage'] += 1
+                }
+
+                echo("Temp User Dict: $tmp_usr_dict")
                 
                 # current_round_dict[key] = tmp_usr_dict
             }
