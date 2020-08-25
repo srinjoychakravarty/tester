@@ -70,7 +70,8 @@ while x < 10
             {
                 echo("Entered Key: $key")
                 #start_usr_dict = prev_round_dict[key]
-                start_usr_dict = current_round_dict[key]
+                #start_usr_dict = current_round_dict[key]
+                start_usr_dict = active_session_dict[key]
                 if (start_usr_dict == null)
                 {
                     echo ("entered if to fill in null 0s...")
