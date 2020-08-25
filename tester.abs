@@ -51,11 +51,12 @@ while x < 4
         echo("Old Keys: $old_keys")            
         if old_keys.len() > 0                                            
         {
-            for old_key in old_keys:                                     
-            {
-                # echo("Current Old Key: $old_key")  
-                # active_session_dict.pop(old_key)
-            }
+            echo("I am inside the if loop")
+            # for old_key in old_keys:                                     
+            # {
+            #     echo("Current Old Key: $old_key")  
+            #     active_session_dict.pop(old_key)
+            # }
         }
     
         # remaining_keys = active_session_dict.keys()                              
