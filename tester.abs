@@ -37,7 +37,7 @@ current_round_dict = {}
 x = 0
 echo("x = $x")
 
-while x < 5 
+while x < 2 
 {
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()
@@ -103,12 +103,12 @@ while x < 5
                 tmp_usr_dict = {}
                 tmp_usr_dict['wall_clock'] = stop_wall_clock
                 tmp_usr_dict['cpu_clock'] = stop_cpu_clock
+                tmp_usr_dict['cpu_usage'] = cpu_usage_pct
 
                 #echo("Temp User Dict: $tmp_usr_dict")
 
                 if (cpu_usage_pct > overusage_parameter)
                 {
-                    tmp_usr_dict['cpu_usage'] = cpu_usage_pct
                     tmp_usr_dict['consecutive_overusage'] = consecutive_overusage + 1
                 }
 
@@ -118,7 +118,7 @@ while x < 5
             }
 
             echo(current_round_dict)
-            # prev_round_dict = current_round_dict
+            prev_round_dict = current_round_dict
 
         }
     }
