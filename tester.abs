@@ -37,7 +37,7 @@ current_round_dict = {}
 x = 0
 echo("x = $x")
 
-while x < 3 
+while x < 5 
 {
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()
@@ -112,12 +112,12 @@ while x < 3
                     tmp_usr_dict['consecutive_overusage'] = consecutive_overusage + 1
                 }
 
-                echo("Temp User Dict: $tmp_usr_dict")
+                #echo("Temp User Dict: $tmp_usr_dict")
                 
-                # current_round_dict[key] = tmp_usr_dict
+                current_round_dict[key] = tmp_usr_dict
             }
 
-            # echo(current_round_dict)
+            echo(current_round_dict)
             # prev_round_dict = current_round_dict
 
         }
