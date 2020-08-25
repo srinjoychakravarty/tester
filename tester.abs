@@ -61,7 +61,7 @@ while x < 2
         {
             echo("I am inside the if old keys loop")
             echo(old_keys)
-            for (x in old_keys):                                     
+            for (x in old_keys)                                     
             {
                 echo("Current Old Key: $x")  
                 #active_session_dict.pop(old_key)
