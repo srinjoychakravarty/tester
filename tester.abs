@@ -81,10 +81,9 @@ while x < 2
                     begin_cpu_clock = start_usr_dict['cpu_clock']
                 }
 
-    
-                # finish_usr_dict = active_session_dict[key]                          
-                # stop_wall_clock = finish_usr_dict['wall_clock']
-                # stop_cpu_clock = finish_usr_dict['cpu_clock']
+                finish_usr_dict = active_session_dict[key]                          
+                stop_wall_clock = finish_usr_dict['wall_clock']
+                stop_cpu_clock = finish_usr_dict['cpu_clock']
 
                 # cpu_duration = stop_cpu_clock - begin_cpu_clock 
                 # wall_clock_duration = stop_wall_clock - begin_wall_clock
