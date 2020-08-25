@@ -72,8 +72,8 @@ while x < 2
                 if (start_usr_dict == null)
                 {
                     echo ("can fill in null...")
-                    # begin_wall_clock = 0
-                    # begin_cpu_clock = 0
+                    begin_wall_clock = 0
+                    begin_cpu_clock = 0
                 }
                 begin_wall_clock = start_usr_dict['wall_clock']
                 begin_cpu_clock = start_usr_dict['cpu_clock']
