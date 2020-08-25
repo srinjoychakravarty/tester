@@ -94,6 +94,7 @@ while x < 3
                 if (finish_usr_dict == null)
                 {
                     echo("this is the first pass as previous dict is null")
+                    stop_wall_clock = 0
                 }
                 stop_wall_clock = finish_usr_dict['wall_clock']
                 #echo("Stop Wall Clock: $stop_wall_clock")
