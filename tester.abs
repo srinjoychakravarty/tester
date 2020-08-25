@@ -113,16 +113,17 @@ while x < 10
                 {
                     echo("Entered Overusage Parameter with percent: $cpu_usage_pct")
                     tmp_usr_dict['consecutive_overusage'] = consecutive_overusage + 1
+                    # why does it halt here
                 }
-
-                echo("Temp User Dict: $tmp_usr_dict")
-                
-                current_round_dict[key] = tmp_usr_dict
+                else
+                {
+                    echo("Temp User Dict: $tmp_usr_dict")
+                    current_round_dict[key] = tmp_usr_dict
+                }                
             }
 
             echo(current_round_dict)
             prev_round_dict = current_round_dict
-
         }
     }
     
