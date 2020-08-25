@@ -74,11 +74,13 @@ while x < 2
                     echo ("can fill in null...")
                     begin_wall_clock = 0
                     begin_cpu_clock = 0
+                    consecutive_overusage = 0
                 }
                 else
                 {
                     begin_wall_clock = start_usr_dict['wall_clock']
                     begin_cpu_clock = start_usr_dict['cpu_clock']
+                    consecutive_overusage = start_usr_dict['consecutive_overusage']
                 }
 
                 finish_usr_dict = active_session_dict[key]                          
@@ -107,7 +109,7 @@ while x < 2
                 if (cpu_usage_pct > overusage_parameter)
                 {
                     tmp_usr_dict['cpu_usage'] = cpu_usage_pct
-                    tmp_usr_dict['consecutive_overusage'] += 1
+                    tmp_usr_dict['consecutive_overusage'] = consecutive_overusage + 1
                 }
 
                 echo("Temp User Dict: $tmp_usr_dict")
