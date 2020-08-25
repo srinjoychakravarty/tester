@@ -75,8 +75,12 @@ while x < 2
                     begin_wall_clock = 0
                     begin_cpu_clock = 0
                 }
-                begin_wall_clock = start_usr_dict['wall_clock']
-                begin_cpu_clock = start_usr_dict['cpu_clock']
+                else
+                {
+                    begin_wall_clock = start_usr_dict['wall_clock']
+                    begin_cpu_clock = start_usr_dict['cpu_clock']
+                }
+
     
                 # finish_usr_dict = active_session_dict[key]                          
                 # stop_wall_clock = finish_usr_dict['wall_clock']
