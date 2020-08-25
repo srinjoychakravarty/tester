@@ -69,6 +69,12 @@ while x < 2
             for key in remaining_keys                                               
             {
                 start_usr_dict = prev_round_dict[key]
+                if (begin_wall_clock == null)
+                {
+                    echo ("can fill in null...")
+                    # begin_wall_clock = 0
+                    # begin_cpu_clock = 0
+                }
                 begin_wall_clock = start_usr_dict['wall_clock']
                 begin_cpu_clock = start_usr_dict['cpu_clock']
     
