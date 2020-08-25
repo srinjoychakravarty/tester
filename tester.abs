@@ -89,9 +89,14 @@ while x < 2
                 stop_cpu_clock = finish_usr_dict['cpu_clock']
                 echo("Stop CPU Clock: $stop_cpu_clock")
 
-                # cpu_duration = stop_cpu_clock - begin_cpu_clock 
-                # wall_clock_duration = stop_wall_clock - begin_wall_clock
-                # cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3) 
+                cpu_duration = stop_cpu_clock - begin_cpu_clock 
+                echo("CPU Duration: $cpu_duration")
+
+                wall_clock_duration = stop_wall_clock - begin_wall_clock
+                echo("Wall Clock Duration: $wall_clock_duration")
+
+                cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3)
+                echo("CPU Usage Percent: $cpu_usage_pct") 
 
                 # tmp_usr_dict = {}
                 # tmp_usr_dict['wall_clock'] = stop_wall_clock
