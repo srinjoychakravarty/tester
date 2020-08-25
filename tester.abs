@@ -120,7 +120,7 @@ while x < 10
                     echo("Temp User Dict: $tmp_usr_dict")
                     current_round_dict[key] = tmp_usr_dict
                 }
-                echo(Echoing....CURRENT ROUND DICT...)
+                echo("Echoing....CURRENT ROUND DICT...")
                 echo(current_round_dict)
             }
             prev_round_dict = current_round_dict
