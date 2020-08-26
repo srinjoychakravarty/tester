@@ -30,7 +30,6 @@ echo("Loop Cadence: $loop_cadence")
 echo("Email Threshold: $email_threshold")
 echo("Overusage Parameter: $overusage_parameter")
 x = 0
-echo("x = $x")
 while x < 4
 {
     prev_round_dict = {}
@@ -38,30 +37,30 @@ while x < 4
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()                        
     num_active_keys = active_keys.len()
-    echo("Number of Active Keys: $num_active_keys")
+    # echo("Number of Active Keys: $num_active_keys")
     if num_active_keys > 0                                               
     {
         old_keys = (prev_round_dict.keys()).diff(active_keys)
-        echo("Old Keys: $old_keys") 
+        # echo("Old Keys: $old_keys") 
         num_old_keys = old_keys.len()
-        echo("Old Keys First Count: $num_old_keys")
+        # echo("Old Keys First Count: $num_old_keys")
         if (num_old_keys > 0)                                            
         {
-            echo(old_keys)
+            # echo(old_keys)
             for old_key in old_keys                                     
             {
-                echo("miracles happen: $old_key")  
+                # echo("miracles happen: $old_key")  
                 active_session_dict.pop(old_key)
             }
         }
-        echo("I am inside the else not old keys loop")
+        # echo("I am inside the else not old keys loop")
         remaining_keys = active_session_dict.keys()                          
         for key in remaining_keys                                           
         {
             echo("Entered Key: $key")
             if (prev_round_dict[key] == null)
             {
-                echo ("entered if to fill in null 0s...")
+                echo ("IF 0 0 0 0 0 0 0 ")
                 begin_wall_clock = 0
                 begin_cpu_clock = 0
                 consecutive_overusage = 0
@@ -69,7 +68,7 @@ while x < 4
             }
             else
             {
-                echo ("entered else to retrieve in clocks...")
+                echo ("ELSE CLOCKS!!!!")
                 begin_wall_clock = prev_round_dict[key]['wall_clock']
                 begin_cpu_clock = prev_round_dict[key]['cpu_clock']
                 consecutive_overusage = prev_round_dict[key]['consecutive_overusage']
@@ -92,8 +91,8 @@ while x < 4
             dict_to_echo[key] = {"current_cpu_usage": cpu_usage_pct, "consecutive_overusage": consecutive_overusage}
         }
     }
-    echo("Echoing....CURRENT ROUND DICT...")
-    echo(dict_to_echo)
+    # echo("Echoing....CURRENT ROUND DICT...")
+    # echo(dict_to_echo)
     x += 1
     echo("Sleeping for $loop_cadence seconds...")
     sleep(loop_cadence*1000)
