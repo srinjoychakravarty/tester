@@ -95,6 +95,7 @@ while x < 3
                 {
                     echo("this is the first pass as previous dict is null")
                     stop_wall_clock = 0
+                    stop_cpu_clock = 0
                 }
                 else
                 {
