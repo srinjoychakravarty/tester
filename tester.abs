@@ -25,7 +25,8 @@ f get_active_session_dicts()
 }
 loop_cadence = int(arg(2))
 email_threshold = int(arg(3))
-overusage_parameter = int(arg(4))
+overusage_parameter = (arg(4)).number()
+
 echo("Loop Cadence: $loop_cadence")
 echo("Email Threshold: $email_threshold")
 echo("Overusage Parameter: $overusage_parameter")
