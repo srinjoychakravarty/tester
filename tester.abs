@@ -65,7 +65,7 @@ while x < 4
                 begin_wall_clock = 0
                 begin_cpu_clock = 0
                 consecutive_overusage = 0
-                cpu_usage_pct = 0
+                # prev_round_dict[key] = {"wall_clock": 0, "cpu_clock": 0, "cpu_usage": 0, "consecutive_overusage": 0}
             }
             else
             {
