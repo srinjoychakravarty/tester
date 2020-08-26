@@ -135,20 +135,26 @@ while x < 3
             if (cpu_usage_pct > overusage_parameter)
             {
                 echo("Entered Overusage Parameter with percent: $cpu_usage_pct")
-                prev_round_dict[key]['consecutive_overusage'] = consecutive_overusage + 1
+                # prev_round_dict[key]['consecutive_overusage'] = consecutive_overusage + 1
+                prev_round_dict[key] = {"wall_clock": stop_wall_clock, "cpu_clock": stop_cpu_clock, "cpu_usage": cpu_usage_pct, "consecutive_overusage": consecutive_overusage + 1}
+            }
+            else
+            {
+                prev_round_dict[key] = {"wall_clock": stop_wall_clock, "cpu_clock": stop_cpu_clock, "cpu_usage": cpu_usage_pct, "consecutive_overusage": 0}
             }
 
             #update new values to previous dictionary now for reuse in the next round
-            prev_round_dict[key]['wall_clock'] = stop_wall_clock
-            prev_round_dict[key]['cpu_clock'] = stop_cpu_clock
-            prev_round_dict[key]['consecutive_overusage'] = 0
 
-            tmp_usr_dict = {}
+            # prev_round_dict[key]['wall_clock'] = stop_wall_clock
+            # prev_round_dict[key]['cpu_clock'] = stop_cpu_clock
+            # prev_round_dict[key]['consecutive_overusage'] = 0
+
+            # tmp_usr_dict = {}
             # tmp_usr_dict['wall_clock'] = stop_wall_clock
             # tmp_usr_dict['cpu_clock'] = stop_cpu_clock
-            tmp_usr_dict['cpu_usage'] = cpu_usage_pct
-            tmp_usr_dict['consecutive_overusage'] = prev_round_dict[key]['consecutive_overusage']
-            dict_to_echo[key] = tmp_usr_dict
+            # tmp_usr_dict['cpu_usage'] = cpu_usage_pct
+            # tmp_usr_dict['consecutive_overusage'] = prev_round_dict[key]['consecutive_overusage']
+            dict_to_echo[key] = {"current_cpu_usage": cpu_usage_pct, "consecutive_overusage": consecutive_overusage}
 
             #echo("Temp User Dict: $tmp_usr_dict")
 
