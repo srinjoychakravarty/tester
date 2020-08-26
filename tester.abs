@@ -86,7 +86,8 @@ while x < 4
         }
     }
     echo("Active Users on HPC this round...")
-    echo(dict_to_echo)
+    #echo(dict_to_echo)
+    echo(dict_to_echo.items())
     x += 1
     echo("Sleeping for $loop_cadence seconds...")
     sleep(loop_cadence*1000)
