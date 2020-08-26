@@ -96,9 +96,11 @@ while x < 3
                     echo("this is the first pass as previous dict is null")
                     stop_wall_clock = 0
                 }
-                stop_wall_clock = finish_usr_dict['wall_clock']
-                #echo("Stop Wall Clock: $stop_wall_clock")
-
+                else
+                {
+                    stop_wall_clock = finish_usr_dict['wall_clock']
+                    #echo("Stop Wall Clock: $stop_wall_clock")
+                }
                 stop_cpu_clock = finish_usr_dict['cpu_clock']
                 #echo("Stop CPU Clock: $stop_cpu_clock")
 
