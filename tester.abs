@@ -1,9 +1,9 @@
-echo("What loop cadence would you like?")
-loop_cadence = int(stdin())
-echo("What CPU percentage is considered overusage?")
-overusage_parameter = (stdin()).number()
-echo("After how many consecutive strikes do you want to email the user?")
-email_threshold = int(stdin())
+# echo("What loop cadence would you like?")
+# loop_cadence = int(stdin())
+# echo("What CPU percentage is considered overusage?")
+# overusage_parameter = (stdin()).number()
+# echo("After how many consecutive strikes do you want to email the user?")
+# email_threshold = int(stdin())
 
 # for input in stdin {
 #     echo(input)
@@ -33,9 +33,9 @@ f get_active_session_dicts()
 	}
 	return active_session_dict
 }
-# loop_cadence = int(arg(2))
-# email_threshold = int(arg(3))
-# overusage_parameter = (arg(4)).number()
+loop_cadence = int(arg(2))
+email_threshold = int(arg(3))
+overusage_parameter = (arg(4)).number()
 
 echo("Loop Cadence: $loop_cadence")
 echo("Email Threshold: $email_threshold")
