@@ -32,14 +32,16 @@ echo("Overusage Parameter: $overusage_parameter")
 x = 0
 while x < 4
 {
-    prev_round_dict = {}
-    dict_to_echo = {}
+    # prev_round_dict = {}
+    # dict_to_echo = {}
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()                        
     num_active_keys = active_keys.len()
     # echo("Number of Active Keys: $num_active_keys")
     if num_active_keys > 0                                               
     {
+        prev_round_dict = {}
+        dict_to_echo = {}
         old_keys = (prev_round_dict.keys()).diff(active_keys)
         # echo("Old Keys: $old_keys") 
         num_old_keys = old_keys.len()
