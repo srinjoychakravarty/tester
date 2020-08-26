@@ -60,7 +60,7 @@ while x < 4
             echo("Entered Key: $key")
             if (prev_round_dict[key] == null)
             {
-                echo ("IF 0 0 0 0 0 0 0 ")
+                # echo ("IF 0 0 0 0 0 0 0 ")
                 begin_wall_clock = 0
                 begin_cpu_clock = 0
                 consecutive_overusage = 0
@@ -68,7 +68,7 @@ while x < 4
             }
             else
             {
-                echo ("ELSE CLOCKS!!!!")
+                # echo ("ELSE CLOCKS!!!!")
                 begin_wall_clock = prev_round_dict[key]['wall_clock']
                 begin_cpu_clock = prev_round_dict[key]['cpu_clock']
                 consecutive_overusage = prev_round_dict[key]['consecutive_overusage']
