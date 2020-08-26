@@ -1,9 +1,9 @@
 echo("What loop cadence would you like?")
-loop_cadence = stdin
+loop_cadence = stdin()
 echo("What CPU % is considered overusage?")
-overusage_parameter = stdin
+overusage_parameter = stdin()
 echo("After how many consecutive strikes do you want to email the user?")
-email_threshold = stdin
+email_threshold = stdin()
 
 # for input in stdin {
 #     echo(input)
