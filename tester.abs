@@ -34,8 +34,6 @@ prev_round_dict = {}
 dict_to_echo = {}
 while x < 4
 {
-    # prev_round_dict = {}
-    # dict_to_echo = {}
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()                        
     num_active_keys = active_keys.len()
@@ -93,8 +91,8 @@ while x < 4
             dict_to_echo[key] = {"current_cpu_usage": cpu_usage_pct, "consecutive_overusage": consecutive_overusage}
         }
     }
-    # echo("Echoing....CURRENT ROUND DICT...")
-    # echo(dict_to_echo)
+    echo("Echoing....CURRENT ROUND DICT...")
+    echo(dict_to_echo)
     x += 1
     echo("Sleeping for $loop_cadence seconds...")
     sleep(loop_cadence*1000)
