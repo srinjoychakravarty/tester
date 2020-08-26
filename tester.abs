@@ -40,10 +40,12 @@ overusage_parameter = (arg(4)).number()
 echo("Loop Cadence: $loop_cadence")
 echo("Email Threshold: $email_threshold")
 echo("Overusage Parameter: $overusage_parameter")
-x = 0
+# x = 0
+loop = true
 prev_round_dict = {}
 dict_to_echo = {}
-while x < 4
+# while x < 4
+while loop == true
 {
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()                        
@@ -98,7 +100,7 @@ while x < 4
     echo("Active Users on HPC this round...")
     echo(dict_to_echo)
     #echo(dict_to_echo.items())
-    x += 1
+    # x += 1
     echo("Sleeping for $loop_cadence seconds...")
     sleep(loop_cadence*1000)
     echo("I ❤ Northeastern")
