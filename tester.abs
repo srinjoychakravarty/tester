@@ -23,19 +23,14 @@ f get_active_session_dicts()
 	}
 	return active_session_dict
 }
-
 loop_cadence = int(arg(2))
 email_threshold = int(arg(3))
 overusage_parameter = int(arg(4))
 echo("Loop Cadence: $loop_cadence")
 echo("Email Threshold: $email_threshold")
 echo("Overusage Parameter: $overusage_parameter")
-
-
-
 x = 0
 echo("x = $x")
-
 while x < 4
 {
     prev_round_dict = {}
@@ -99,11 +94,8 @@ while x < 4
     }
     echo("Echoing....CURRENT ROUND DICT...")
     echo(dict_to_echo)
-
-    
     x += 1
     echo("Sleeping for $loop_cadence seconds...")
     sleep(loop_cadence*1000)
     echo("I ❤ Northeastern")
 }
-
