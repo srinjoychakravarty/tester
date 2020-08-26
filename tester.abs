@@ -31,14 +31,15 @@ echo("Loop Cadence: $loop_cadence")
 echo("Email Threshold: $email_threshold")
 echo("Overusage Parameter: $overusage_parameter")
 
-prev_round_dict = {}
-current_round_dict = {}
+
 
 x = 0
 echo("x = $x")
 
-while x < 2
+while x < 3
 {
+    prev_round_dict = {}
+    dict_to_echo = {}
     active_session_dict = get_active_session_dicts()
     active_keys = active_session_dict.keys()
     # echo("Printing Active Session Dictionary...\n") 
@@ -60,84 +61,116 @@ while x < 2
                 active_session_dict.pop(old_key)
             }
         }
-        else
+        # else
+        # {
+        echo("I am inside the else not old keys loop")
+        remaining_keys = active_session_dict.keys()
+        echo("Printing Remaining Keys...")
+        #echo(remaining_keys)                           
+        for key in remaining_keys   # definitely active keys for this round                                            
         {
-            echo("I am inside the else not old keys loop")
-            remaining_keys = active_session_dict.keys()
-            echo("Printing Remaining Keys...")
-            #echo(remaining_keys)                           
-            for key in remaining_keys                                               
+            echo("Entered Key: $key")
+            #start_usr_dict = prev_round_dict[key]
+            #start_usr_dict = dict_to_echo[key]
+            #start_usr_dict = active_session_dict[key]
+            # if (start_usr_dict == null)
+            # {
+            #     echo ("entered if to fill in null 0s...")
+            #     begin_wall_clock = 0
+            #     begin_cpu_clock = 0
+            #     consecutive_overusage = 0
+            #     cpu_usage_pct = 0
+            # }
+            if (prev_round_dict[key] == null)
             {
-                echo("Entered Key: $key")
-                #start_usr_dict = prev_round_dict[key]
-                #start_usr_dict = current_round_dict[key]
-                start_usr_dict = active_session_dict[key]
-                if (start_usr_dict == null)
-                {
-                    echo ("entered if to fill in null 0s...")
-                    begin_wall_clock = 0
-                    begin_cpu_clock = 0
-                    consecutive_overusage = 0
-                    cpu_usage_pct = 0
-                }
-                else
-                {
-                    echo ("entered else to retrieve in clocks...")
-                    begin_wall_clock = start_usr_dict['wall_clock']
-                    begin_cpu_clock = start_usr_dict['cpu_clock']
-                    consecutive_overusage = start_usr_dict['consecutive_overusage']
-                }
-
-                #finish_usr_dict = active_session_dict[key]  
-                finish_usr_dict = prev_round_dict[key]                          
-                
-                if (finish_usr_dict == null)
-                {
-                    echo("this is the first pass as previous dict is null")
-                    stop_wall_clock = 0
-                    stop_cpu_clock = 0
-                }
-                else
-                {
-                    stop_wall_clock = finish_usr_dict['wall_clock']
-                    #echo("Stop Wall Clock: $stop_wall_clock")
-                    stop_cpu_clock = finish_usr_dict['cpu_clock']
-                    #echo("Stop CPU Clock: $stop_cpu_clock")
-                }
-
-                cpu_duration = stop_cpu_clock - begin_cpu_clock 
-                #echo("CPU Duration: $cpu_duration")
-
-                wall_clock_duration = stop_wall_clock - begin_wall_clock
-                #echo("Wall Clock Duration: $wall_clock_duration")
-
-                cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3)
-                echo("CPU Usage Percent: $cpu_usage_pct") 
-
-                tmp_usr_dict = {}
-                tmp_usr_dict['wall_clock'] = stop_wall_clock
-                tmp_usr_dict['cpu_clock'] = stop_cpu_clock
-                tmp_usr_dict['cpu_usage'] = cpu_usage_pct
-
-                #echo("Temp User Dict: $tmp_usr_dict")
-
-                if (cpu_usage_pct > overusage_parameter)
-                {
-                    echo("Entered Overusage Parameter with percent: $cpu_usage_pct")
-                    tmp_usr_dict['consecutive_overusage'] = consecutive_overusage + 1
-                    # why does it halt here
-                }
-                else
-                {
-                    echo("Temp User Dict: $tmp_usr_dict")
-                    current_round_dict[key] = tmp_usr_dict
-                }
-                echo("Echoing....CURRENT ROUND DICT...")
-                echo(current_round_dict)
+                echo ("entered if to fill in null 0s...")
+                begin_wall_clock = 0
+                begin_cpu_clock = 0
+                consecutive_overusage = 0
+                cpu_usage_pct = 0
             }
-            prev_round_dict = current_round_dict
+            else
+            {
+                echo ("entered else to retrieve in clocks...")
+                #begin_wall_clock = start_usr_dict['wall_clock']
+                begin_wall_clock = prev_round_dict[key]['wall_clock']
+                #begin_cpu_clock = start_usr_dict['cpu_clock']
+                begin_cpu_clock = prev_round_dict[key]['cpu_clock']
+                #consecutive_overusage = start_usr_dict['consecutive_overusage']
+                consecutive_overusage = prev_round_dict[key]['consecutive_overusage']
+            }
+
+            #finish_usr_dict = active_session_dict[key]  
+            #finish_usr_dict = prev_round_dict[key]                          
+            
+            # if (finish_usr_dict == null)
+            # {
+            #     echo("this is the first pass as previous dict is null")
+            #     stop_wall_clock = 0
+            #     stop_cpu_clock = 0
+            # }
+            # if (active_session_dict[key] == null)
+            # {
+            #     echo("this is the first pass as previous dict is null")
+            #     stop_wall_clock = 0
+            #     stop_cpu_clock = 0
+            # }
+            # else
+            # {
+            stop_wall_clock = active_session_dict[key]['wall_clock']
+            #echo("Stop Wall Clock: $stop_wall_clock")
+            stop_cpu_clock = active_session_dict[key]['cpu_clock']
+            #echo("Stop CPU Clock: $stop_cpu_clock")
+            # }
+
+            cpu_duration = stop_cpu_clock - begin_cpu_clock 
+            #echo("CPU Duration: $cpu_duration")
+
+            wall_clock_duration = stop_wall_clock - begin_wall_clock
+            #echo("Wall Clock Duration: $wall_clock_duration")
+
+            cpu_usage_pct = ((cpu_duration / wall_clock_duration) * 100).round(3)
+            echo("CPU Usage Percent: $cpu_usage_pct") 
+
+            if (cpu_usage_pct > overusage_parameter)
+            {
+                echo("Entered Overusage Parameter with percent: $cpu_usage_pct")
+                prev_round_dict[key]['consecutive_overusage'] = consecutive_overusage + 1
+            }
+
+            #update new values to previous dictionary now for reuse in the next round
+            prev_round_dict[key]['wall_clock'] = stop_wall_clock
+            prev_round_dict[key]['cpu_clock'] = stop_cpu_clock
+            prev_round_dict[key]['consecutive_overusage'] = 0
+
+            tmp_usr_dict = {}
+            # tmp_usr_dict['wall_clock'] = stop_wall_clock
+            # tmp_usr_dict['cpu_clock'] = stop_cpu_clock
+            tmp_usr_dict['cpu_usage'] = cpu_usage_pct
+            tmp_usr_dict['consecutive_overusage'] = prev_round_dict[key]['consecutive_overusage']
+            dict_to_echo[key] = tmp_usr_dict
+
+            #echo("Temp User Dict: $tmp_usr_dict")
+
+            # if (cpu_usage_pct > overusage_parameter)
+            # {
+            #     echo("Entered Overusage Parameter with percent: $cpu_usage_pct")
+            #     tmp_usr_dict['consecutive_overusage'] = consecutive_overusage + 1
+            #     # why does it halt here
+            # }
+            # else
+            # {
+            #     echo("Temp User Dict: $tmp_usr_dict")
+            #     dict_to_echo[key] = tmp_usr_dict
+            # }
+
         }
+            # prev_round_dict = current_round_dict
+        # }
     }
+    echo("Echoing....CURRENT ROUND DICT...")
+    echo(dict_to_echo)
+
     
     x += 1
     echo("Sleeping for $loop_cadence seconds...")
